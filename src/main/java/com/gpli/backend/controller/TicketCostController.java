@@ -30,4 +30,17 @@ public class TicketCostController {
     public ResponseEntity<List<TicketCost>> getByTicket(@PathVariable Integer ticketId) {
         return ResponseEntity.ok(service.getByTicketId(ticketId));
     }
+
+    @GetMapping("/ticket/{ticketId}/latest")
+    public ResponseEntity<TicketCost> getLatest(@PathVariable Integer ticketId) {
+        return service.getLatestByTicketId(ticketId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/ticket/{ticketId}/latest")
+    public ResponseEntity<Void> deleteLatest(@PathVariable Integer ticketId) {
+        service.deleteLatestByTicketId(ticketId);
+        return ResponseEntity.noContent().build();
+    }
 }
