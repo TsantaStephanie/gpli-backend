@@ -30,6 +30,13 @@ public class TicketCost {
     @Column(name = "item_types", length = 2000)
     private String itemTypes;
 
+    /**
+     * Origine du coût : "glpi" (importé depuis GLPI/Feuille 3)
+     *                   "kanban" (saisi via le dialog Kanban)
+     */
+    @Column(name = "source", length = 20)
+    private String source;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
