@@ -1,8 +1,0 @@
-generer playlist mp3:
-desktop et mobile:
-desktop:-repertoire pour les musiques 
-        -programme qui ecoute les nouvelles musiques (seuls les fichiers mp3), il checke tous les 5mins->liste tous les fichiers mp3 tous les 5mins
-        -programme d'extraction :metadonnées des mp3 en utilisantune librairie
-        -programme (standalone) : 
-                                -prend les sorties du 2ème programme 
-                                -appelle une api et renvoie les données à travers cet api 

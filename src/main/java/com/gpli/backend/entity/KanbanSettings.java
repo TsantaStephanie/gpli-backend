@@ -17,4 +17,7 @@ public class KanbanSettings {
 
     @Column(name = "label_mg")
     private String labelMg;    // nom en malgache ex: "Vaovao"
+
+    @Column(name = "cost_fixe")
+    private String costFixe;
 }
