@@ -38,9 +38,28 @@ public class TicketCostController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<TicketCost> update(@PathVariable Long id, @RequestBody TicketCost update) {
+        return service.updateById(id, update)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @DeleteMapping("/ticket/{ticketId}/latest")
     public ResponseEntity<Void> deleteLatest(@PathVariable Integer ticketId) {
         service.deleteLatestByTicketId(ticketId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAll() {
+        service.deleteAll();
         return ResponseEntity.noContent().build();
     }
 }

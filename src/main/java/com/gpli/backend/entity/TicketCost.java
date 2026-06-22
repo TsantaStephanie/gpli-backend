@@ -37,6 +37,14 @@ public class TicketCost {
     @Column(name = "source", length = 20)
     private String source;
 
+    /** Pourcentage de réouverture (ex: 10.0 = 10%), null si source != 'reopen' */
+    @Column(name = "reopen_pct")
+    private Double reopenPct;
+
+    /** Mode de calcul de la base (1-4), null si source != 'reopen' */
+    @Column(name = "reopen_mode")
+    private Integer reopenMode;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

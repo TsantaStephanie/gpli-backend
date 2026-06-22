@@ -30,9 +30,28 @@ public class TicketCostService {
         return repository.findTopByTicketIdOrderByCreatedAtDesc(ticketId);
     }
 
-    public boolean deleteLatestByTicketId(Integer ticketId) {
-        return repository.findTopByTicketIdOrderByCreatedAtDesc(ticketId)
-            .map(cost -> { repository.delete(cost); return true; })
-            .orElse(false);
+    public void deleteAll() {
+        repository.deleteAll();
+    }
+
+    public java.util.Optional<TicketCost> updateById(Long id, TicketCost update) {
+        return repository.findById(id).map(cost -> {
+            cost.setFixedCost(update.getFixedCost());
+            cost.setReopenPct(update.getReopenPct());
+            cost.setReopenMode(update.getReopenMode());
+            return repository.save(cost);
+        });
+    }
+
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
+    public boolean deleteLatestByTicketId(Integer ticketID) {
+        return repository.findTopByTicketIdOrderByCreatedAtDesc(ticketID)
+        .map(cost -> {repository.delete(cost);
+            return true;
+        })
+        .orElse(false);
     }
 }
